@@ -1,44 +1,29 @@
 import React, { useState } from "react";
 import { AppLogo } from "../../assets/png";
-import { CloseMenu, Logo, MenuIcon } from "../../assets/svg";
+import { CloseMenu, MenuIcon } from "../../assets/svg";
 import "./header.css";
 
 function Header() {
-  const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
-  const closeMobileMenu = () => setClick(false);
+  const [click, setClick] = useState(true);
 
   return (
-    <nav>
-      <header>
-        <div className="logo-container">
-          <img src={AppLogo} alt="logo" />
+    <header>
+      <nav>
+        <div className="nav-head">
+          <div className="logo-container">
+            <img src={AppLogo} alt="logo" />
+          </div>
+          <div onClick={() => setClick(!click)}>
+            {click ? <MenuIcon /> : <CloseMenu />}
+          </div>
         </div>
-        <ul className={click ? "nav-options active" : "nav-options"}>
-          <li className="option" onClick={closeMobileMenu}>
-            Table
-          </li>
-          <li className="option" onClick={closeMobileMenu}>
-            Results
-          </li>
-          <li className="option" onClick={closeMobileMenu}>
-            About
-          </li>
+        <ul className={`nav-links ${click ? "toggle" : ""}`}>
+          <li>Table</li>
+          <li>Results</li>
+          <li>About</li>
         </ul>
-        {/* <ul>
-          <li onClick={closeMobileMenu}>Table</li>
-          <li onClick={closeMobileMenu}>Results</li>
-          <li onClick={closeMobileMenu}>About</li>
-        </ul> */}
-        {/* <div className="mobile-menu" onClick={handleClick}>
-          {click ? (
-            <CloseMenu className="menu-icon" />
-          ) : (
-            <MenuIcon className="menu-icon" />
-          )}
-        </div> */}
-      </header>
-    </nav>
+      </nav>
+    </header>
   );
 }
 
