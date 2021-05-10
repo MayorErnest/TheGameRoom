@@ -9,10 +9,10 @@ function Table() {
 
   const fetchAllData = async () => {
     Tabletop.init({
-      key: "1x_tvCjP2jYIzoHQPVEp7TiQYL7wjFOSHA4xr1zU4IHc",
+      key: process.env.REACT_APP_TABLETOP_KEY,
     })
       .then((data) => {
-        setData(data.Sheet1.elements);
+        setData(data.Table.elements);
         const timer = setTimeout(() => {
           setLoading(false);
         }, 3000);
