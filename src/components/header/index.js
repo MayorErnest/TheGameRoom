@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { AppLogo } from "../../assets/png";
 import { CloseMenu, MenuIcon } from "../../assets/svg";
 import "./header.css";
@@ -11,15 +12,25 @@ function Header() {
       <nav>
         <div className="nav-head">
           <div className="logo-container">
-            <img src={AppLogo} alt="logo" />
+            <Link to="/">
+              <img src={AppLogo} alt="logo" />
+            </Link>
           </div>
           <div onClick={() => setClick(!click)}>
             {click ? <MenuIcon /> : <CloseMenu />}
           </div>
         </div>
         <ul className={`nav-links ${click ? "toggle" : ""}`}>
-          <li>Table</li>
-          <li>Results</li>
+          <li>
+            <NavLink to="/" exact activeClassName="active-link">
+              Table
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/results" activeClassName="active-link">
+              Results
+            </NavLink>
+          </li>
           <li>About</li>
         </ul>
       </nav>

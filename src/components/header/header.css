@@ -28,6 +28,16 @@ nav {
   font-weight: 500;
 }
 
+nav a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.active-link {
+  padding-bottom: 10px;
+  border-bottom: 2px solid #cd3dc8;
+}
+
 @media all and (max-width: 800px) {
   nav {
     flex-direction: column;

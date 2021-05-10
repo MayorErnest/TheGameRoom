@@ -12,12 +12,13 @@ function Results() {
             {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((item, index) => (
               <tr key={index}>
                 <td>
-                  Ezra <br /> <span style={{ margin: "0 10px" }}>+4</span>
+                  Ezra <br /> <span>+4</span>
                 </td>
                 <td>3-2</td>
                 <td>
                   <div>
-                    Jerry <br /> <span>+10</span>
+                    Jerry
+                    <br /> <span>+10</span>
                   </div>
                 </td>
               </tr>
