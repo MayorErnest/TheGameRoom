@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../components/header";
+import Tabletop from "tabletop";
 
 function Table() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    Tabletop.init({
+      key: "1x_tvCjP2jYIzoHQPVEp7TiQYL7wjFOSHA4xr1zU4IHc",
+      simpleSheet: true,
+    })
+      .then((data) => setData(data))
+      .catch((err) => console.warn(err));
+  }, [data]);
+
   return (
     <>
       <Header />
@@ -15,11 +27,11 @@ function Table() {
             </tr>
           </thead>
           <tbody>
-            {[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0].map((item, index) => (
-              <tr key={index}>
-                <td>1</td>
-                <td>Ezra</td>
-                <td>20</td>
+            {data.map((item, index) => (
+              <tr key={index} className={`rank-${item.Class}`}>
+                <td>{item.Rank}</td>
+                <td>{item.Name}</td>
+                <td>{item.Points}</td>
               </tr>
             ))}
           </tbody>

@@ -14,12 +14,6 @@ ul {
   margin: 0 110px;
 }
 
-@media all and (max-width: 800px) {
-  .app-container {
-    margin: 0 20px;
-  }
-}
-
 table {
   width: 100%;
   border-collapse: collapse;
@@ -77,6 +71,22 @@ tbody td {
   color: #0065fd;
 }
 
+table .rank-A {
+  background: rgba(233, 0, 0, 0.12);
+}
+
+table .rank-B {
+  background: rgba(254, 230, 14, 0.12);
+}
+
+table .rank-C {
+  background: rgba(21, 195, 39, 0.12);
+}
+
+table .rank-D {
+  background: rgba(0, 101, 253, 0.12);
+}
+
 .result {
   margin-bottom: 100px;
 }
@@ -96,4 +106,10 @@ tbody td {
   text-align: left;
   width: 40%;
   padding-left: 20px;
+}
+
+@media all and (max-width: 800px) {
+  .app-container {
+    margin: 0 20px;
+  }
 }
