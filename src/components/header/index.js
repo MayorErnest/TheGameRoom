@@ -31,7 +31,14 @@ function Header() {
               Results
             </NavLink>
           </li>
-          <li>About</li>
+          <li>
+            <a
+              href="https://drive.google.com/file/d/1WcPiO-YnberCzEslkPnO4kyYIszoiVHf/view?usp=sharing"
+              target="_blank"
+            >
+              About
+            </a>
+          </li>
         </ul>
       </nav>
     </header>
