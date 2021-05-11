@@ -15,7 +15,7 @@ function Table() {
         setData(data.Table.elements);
         const timer = setTimeout(() => {
           setLoading(false);
-        }, 3000);
+        }, 2000);
         return () => clearTimeout(timer);
       })
       .catch((err) => {

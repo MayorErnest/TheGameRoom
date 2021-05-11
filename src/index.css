@@ -91,7 +91,7 @@ table .rank-D {
   margin-bottom: 100px;
 }
 .result table td {
-  color: #cd3dc8;
+  color: #000000;
 }
 .result table td:nth-of-type(1) {
   text-align: right;
