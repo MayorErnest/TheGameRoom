@@ -108,8 +108,42 @@ table .rank-D {
   padding-left: 20px;
 }
 
+.pagination_controls {
+  margin-top: 50px;
+  text-align: center;
+}
+.pagination_controls button {
+  height: 50px;
+  width: 50px;
+  border: none;
+  margin: 0 20px;
+  margin-bottom: 40px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: none;
+  cursor: pointer;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 @media all and (max-width: 800px) {
   .app-container {
     margin: 0 20px;
+  }
+
+  thead th {
+    font-size: 1.05rem;
+  }
+
+  tbody td {
+    font-size: 1rem;
+  }
+
+  .table-footer h2 {
+    font-size: 1.2rem;
+  }
+
+  .table-footer ul {
+    font-size: 0.95rem;
   }
 }

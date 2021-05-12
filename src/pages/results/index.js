@@ -4,8 +4,12 @@ import Tabletop from "tabletop";
 import { Loader } from "../../components/loader";
 
 function Results() {
+  const dataLimit = 10;
+  const pageLimit = 5;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [pages, setPages] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const fetchAllData = async () => {
     Tabletop.init({
@@ -15,6 +19,7 @@ function Results() {
         setData(data.Results.elements);
         const timer = setTimeout(() => {
           setLoading(false);
+          setPages(Math.round(data.Results.elements.length / dataLimit));
         }, 2000);
         return () => clearTimeout(timer);
       })
@@ -23,6 +28,20 @@ function Results() {
         setData([]);
         setLoading(false);
       });
+  };
+
+  const goToNextPage = () => {
+    setCurrentPage((page) => page + 1);
+  };
+
+  const goToPreviousPage = () => {
+    setCurrentPage((page) => page - 1);
+  };
+
+  const getPaginatedData = () => {
+    const startIndex = currentPage * dataLimit - dataLimit;
+    const endIndex = startIndex + dataLimit;
+    return data.slice(startIndex, endIndex);
   };
 
   useEffect(() => {
@@ -40,7 +59,7 @@ function Results() {
             {" "}
             <table>
               <tbody>
-                {data.map((item, index) => (
+                {getPaginatedData().map((item, index) => (
                   <tr key={index}>
                     <td>{item.PlayerA}</td>
                     <td>{`${item.ScoreA} - ${item.ScoreB}`}</td>
@@ -49,6 +68,20 @@ function Results() {
                 ))}
               </tbody>
             </table>
+            <div className="pagination_controls">
+              <button
+                onClick={goToPreviousPage}
+                disabled={currentPage === 1 ? true : false}
+              >
+                {"<"}
+              </button>
+              <button
+                onClick={goToNextPage}
+                disabled={currentPage === pages ? true : false}
+              >
+                {">"}
+              </button>
+            </div>
           </main>
         </>
       )}
