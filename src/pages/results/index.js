@@ -19,13 +19,11 @@ function Results() {
         setData(data.Results.elements);
         const timer = setTimeout(() => {
           setLoading(false);
-          console.log(data.Results.elements.length);
           setPages(Math.ceil(data.Results.elements.length / dataLimit));
         }, 1500);
         return () => clearTimeout(timer);
       })
       .catch((err) => {
-        console.warn(err);
         setData([]);
         setLoading(false);
       });
