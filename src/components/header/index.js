@@ -35,6 +35,7 @@ function Header() {
             <a
               href="https://drive.google.com/file/d/1WcPiO-YnberCzEslkPnO4kyYIszoiVHf/view?usp=sharing"
               target="_blank"
+              rel="noreferrer"
             >
               About
             </a>

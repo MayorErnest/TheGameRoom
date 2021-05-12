@@ -5,7 +5,7 @@ import { Loader } from "../../components/loader";
 
 function Results() {
   const dataLimit = 10;
-  const pageLimit = 5;
+  // const pageLimit = 5;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [pages, setPages] = useState(0);
@@ -19,8 +19,9 @@ function Results() {
         setData(data.Results.elements);
         const timer = setTimeout(() => {
           setLoading(false);
-          setPages(Math.round(data.Results.elements.length / dataLimit));
-        }, 2000);
+          console.log(data.Results.elements.length);
+          setPages(Math.ceil(data.Results.elements.length / dataLimit));
+        }, 1500);
         return () => clearTimeout(timer);
       })
       .catch((err) => {
@@ -75,6 +76,9 @@ function Results() {
               >
                 {"<"}
               </button>
+              <span>
+                {currentPage}/{pages}
+              </span>
               <button
                 onClick={goToNextPage}
                 disabled={currentPage === pages ? true : false}
