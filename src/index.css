@@ -126,6 +126,16 @@ table .rank-D {
   -webkit-tap-highlight-color: transparent;
 }
 
+.offline {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.offline svg {
+  width: 70px;
+  height: 70px;
+}
+
 @media all and (max-width: 800px) {
   .app-container {
     margin: 0 20px;

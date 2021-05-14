@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Header } from "../../components/header";
 import Tabletop from "tabletop";
 import { Loader } from "../../components/loader";
+import { Offline } from "../../components";
 
 function Results() {
   const dataLimit = 10;
@@ -25,7 +26,10 @@ function Results() {
       })
       .catch((err) => {
         setData([]);
-        setLoading(false);
+        const timer = setTimeout(() => {
+          setLoading(false);
+        }, 1500);
+        return () => clearTimeout(timer);
       });
   };
 
@@ -53,38 +57,44 @@ function Results() {
         <Loader />
       ) : (
         <>
-          <Header />
-          <main className="app-container result">
-            {" "}
-            <table>
-              <tbody>
-                {getPaginatedData().map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.PlayerA}</td>
-                    <td>{`${item.ScoreA} - ${item.ScoreB}`}</td>
-                    <td>{item.PlayerB}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-            <div className="pagination_controls">
-              <button
-                onClick={goToPreviousPage}
-                disabled={currentPage === 1 ? true : false}
-              >
-                {"<"}
-              </button>
-              <span>
-                {currentPage}/{pages}
-              </span>
-              <button
-                onClick={goToNextPage}
-                disabled={currentPage === pages ? true : false}
-              >
-                {">"}
-              </button>
-            </div>
-          </main>
+          {data.length ? (
+            <>
+              <Header />
+              <main className="app-container result">
+                {" "}
+                <table>
+                  <tbody>
+                    {getPaginatedData().map((item, index) => (
+                      <tr key={index}>
+                        <td>{item.PlayerA}</td>
+                        <td>{`${item.ScoreA} - ${item.ScoreB}`}</td>
+                        <td>{item.PlayerB}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+                <div className="pagination_controls">
+                  <button
+                    onClick={goToPreviousPage}
+                    disabled={currentPage === 1 ? true : false}
+                  >
+                    {"<"}
+                  </button>
+                  <span>
+                    {currentPage}/{pages}
+                  </span>
+                  <button
+                    onClick={goToNextPage}
+                    disabled={currentPage === pages ? true : false}
+                  >
+                    {">"}
+                  </button>
+                </div>
+              </main>
+            </>
+          ) : (
+            <Offline />
+          )}
         </>
       )}
     </>
