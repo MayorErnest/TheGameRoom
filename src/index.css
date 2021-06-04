@@ -11,7 +11,8 @@ ul {
 }
 
 .app-container {
-  margin: 0 110px;
+  margin: 0 auto;
+  max-width: 1280px;
 }
 
 table {
