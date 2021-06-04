@@ -1,8 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Results } from "./pages/results";
-import { Table } from "./pages/table";
+import { History, Table, Results } from "./pages";
 
 function App() {
   return (
@@ -14,6 +13,9 @@ function App() {
           </Route>
           <Route path="/results" exact>
             <Results />
+          </Route>
+          <Route path="/history" exact>
+            <History />
           </Route>
           <Route path="*">
             <Table />

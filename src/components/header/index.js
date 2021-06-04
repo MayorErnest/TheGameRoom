@@ -32,6 +32,11 @@ function Header() {
             </NavLink>
           </li>
           <li>
+            <NavLink to="/history" activeClassName="active-link">
+              History
+            </NavLink>
+          </li>
+          <li>
             <a
               href="https://drive.google.com/file/d/1WcPiO-YnberCzEslkPnO4kyYIszoiVHf/view?usp=sharing"
               target="_blank"
